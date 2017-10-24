@@ -19,6 +19,11 @@ namespace BusinessPlanWriter
         {
         }
 
+        public Excel.Worksheet GetWorksheet()
+        {
+            return (Excel.Worksheet) Application.ActiveSheet;
+        }
+
         #region VSTO generated code
 
         /// <summary>
