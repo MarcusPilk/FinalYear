@@ -37,6 +37,7 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.btn = this.Factory.CreateRibbonButton();
+            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             // group1
             // 
             this.group1.Items.Add(this.btn);
+            this.group1.Items.Add(this.toggleButton1);
             this.group1.Label = "Business Plan Writer";
             this.group1.Name = "group1";
             // 
@@ -58,6 +60,11 @@
             this.btn.Label = "Business Plan";
             this.btn.Name = "btn";
             this.btn.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_Click);
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Label = "Show Task Pane";
+            this.toggleButton1.Name = "toggleButton1";
             // 
             // BPRibbon
             // 
@@ -78,6 +85,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton1;
     }
 
     partial class ThisRibbonCollection

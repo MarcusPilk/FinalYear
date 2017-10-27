@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
-using Microsoft.Office.Tools.Excel;
+using Microsoft.Office.Tools;
 
 namespace BusinessPlanWriter
 {
@@ -13,6 +13,9 @@ namespace BusinessPlanWriter
     {
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            myUserControl1 = new TaskPaneControl();
+            myCustomTaskPane = this.CustomTaskPanes.Add(myUserControl1, "My Task Pane");
+            myCustomTaskPane.Visible = true;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -26,6 +29,9 @@ namespace BusinessPlanWriter
             System.Windows.Forms.MessageBox.Show(n);
             return (Excel.Worksheet) Application.ActiveSheet;
         }
+
+        private TaskPaneControl myUserControl1;
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane;
 
         #region VSTO generated code
 
@@ -41,4 +47,8 @@ namespace BusinessPlanWriter
         
         #endregion
     }
-}
+
+
+
+
+    }

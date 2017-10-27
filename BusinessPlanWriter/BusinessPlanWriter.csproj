@@ -171,6 +171,9 @@
     <EmbeddedResource Include="Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TaskPaneControl.resx">
+      <DependentUpon>TaskPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="BusinessPlanWriter_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -185,6 +188,12 @@
     </Compile>
     <Compile Include="Ribbon.Designer.cs">
       <DependentUpon>Ribbon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPaneControl.Designer.cs">
+      <DependentUpon>TaskPaneControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
