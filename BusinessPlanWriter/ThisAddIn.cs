@@ -21,6 +21,9 @@ namespace BusinessPlanWriter
 
         public Excel.Worksheet GetWorksheet()
         {
+            Excel.Worksheet wS = (Excel.Worksheet) Application.ActiveSheet;
+            String n = wS.Name;
+            System.Windows.Forms.MessageBox.Show(n);
             return (Excel.Worksheet) Application.ActiveSheet;
         }
 
