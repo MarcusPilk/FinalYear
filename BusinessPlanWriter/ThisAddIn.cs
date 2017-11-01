@@ -14,8 +14,21 @@ namespace BusinessPlanWriter
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             myUserControl1 = new TaskPaneControl();
-            myCustomTaskPane = this.CustomTaskPanes.Add(myUserControl1, "My Task Pane");
-            myCustomTaskPane.Visible = true;
+            myCustomTaskPane = this.CustomTaskPanes.Add(myUserControl1, "Business Plan Writer");
+            myCustomTaskPane.VisibleChanged += new EventHandler(myCustomTaskPane_VisibleChanged);
+        }
+
+        private void myCustomTaskPane_VisibleChanged(object sender, EventArgs e)
+        {
+            Globals.Ribbons.Ribbon.toggleButton1.Checked = myCustomTaskPane.Visible;
+        }
+
+        public Microsoft.Office.Tools.CustomTaskPane TaskPane
+        {
+            get
+            {
+                return myCustomTaskPane;
+            }
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

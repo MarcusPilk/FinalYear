@@ -65,6 +65,7 @@
             // 
             this.toggleButton1.Label = "Show Task Pane";
             this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton1_Click);
             // 
             // BPRibbon
             // 
