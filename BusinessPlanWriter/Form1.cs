@@ -21,5 +21,26 @@ namespace BusinessPlanWriter
         {
 
         }
+
+        private void Section_1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Section_1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Section_1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
@@ -18,6 +19,8 @@ namespace BusinessPlanWriter
             myCustomTaskPane.VisibleChanged += new EventHandler(myCustomTaskPane_VisibleChanged);
         }
 
+
+
         private void myCustomTaskPane_VisibleChanged(object sender, EventArgs e)
         {
             Globals.Ribbons.Ribbon.toggleButton1.Checked = myCustomTaskPane.Visible;
@@ -30,6 +33,8 @@ namespace BusinessPlanWriter
                 return myCustomTaskPane;
             }
         }
+
+
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
@@ -45,7 +50,8 @@ namespace BusinessPlanWriter
 
         private TaskPaneControl myUserControl1;
         private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane;
-
+        private Section_1 section1Form;
+        private Form mySection1Form;
         #region VSTO generated code
 
         /// <summary>

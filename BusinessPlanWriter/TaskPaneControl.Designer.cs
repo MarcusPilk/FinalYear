@@ -64,6 +64,7 @@
             this.Controls.Add(this.label1);
             this.Name = "TaskPaneControl";
             this.Size = new System.Drawing.Size(265, 684);
+            this.Load += new System.EventHandler(this.TaskPaneControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
