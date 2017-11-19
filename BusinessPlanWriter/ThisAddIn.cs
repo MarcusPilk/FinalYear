@@ -50,8 +50,6 @@ namespace BusinessPlanWriter
 
         private TaskPaneControl myUserControl1;
         private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane;
-        private Section_1 section1Form;
-        private Form mySection1Form;
         #region VSTO generated code
 
         /// <summary>

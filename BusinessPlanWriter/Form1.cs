@@ -39,8 +39,13 @@ namespace BusinessPlanWriter
 
         private void Section_1_FormClosing(object sender, FormClosingEventArgs e)
         {
+           this.Hide();
+           e.Cancel = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            e.Cancel = true;
         }
     }
 }
