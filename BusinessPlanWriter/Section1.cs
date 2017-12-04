@@ -11,9 +11,9 @@ using Microsoft.Office.Interop.Excel;
 
 namespace BusinessPlanWriter
 {
-    public partial class Section_1 : Form
+    public partial class Section1 : Form
     {
-        public Section_1()
+        public Section1()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace BusinessPlanWriter
 
         }
 
-        private void Section_1_Load(object sender, EventArgs e)
+        private void Section1_Load(object sender, EventArgs e)
         {
 
         }
@@ -33,12 +33,12 @@ namespace BusinessPlanWriter
 
         }
 
-        private void Section_1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Section1_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
         }
 
-        private void Section_1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Section1_FormClosing(object sender, FormClosingEventArgs e)
         {
            this.Hide();
            e.Cancel = true;

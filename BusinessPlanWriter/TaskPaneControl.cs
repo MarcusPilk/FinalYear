@@ -15,7 +15,15 @@ namespace BusinessPlanWriter
     public partial class TaskPaneControl : UserControl
     {
         //Stops new form opening when button is clicked twice
-        Form form = new Section_1();
+        Form form1 = new Section1();
+        Form form2 = new Section2();
+        Form form3 = new Section3();
+        Form form4 = new Section4();
+        Form form5 = new Section5();
+        Form form6 = new Section6();
+        Form form7 = new Section7();
+
+
 
         public TaskPaneControl()
         {
@@ -35,8 +43,68 @@ namespace BusinessPlanWriter
             if (clickedLabel != null)
             {
                 //Write pop up box code here
-                form.Show();
+                form1.Show();
                 //System.Windows.Forms.MessageBox.Show("Section 1 Clicked");
+            }
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form2.Show();
+            }
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form3.Show();
+            }
+        }
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form4.Show();
+            }
+        }
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form5.Show();
+            }
+        }
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form6.Show();
+            }
+        }
+        private void label8_Click(object sender, EventArgs e)
+        {
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                //Write pop up box code here
+                form7.Show();
             }
         }
 

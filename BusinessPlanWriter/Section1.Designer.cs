@@ -1,6 +1,6 @@
 ﻿namespace BusinessPlanWriter
 {
-    partial class Section_1
+    partial class Section1
     {
         /// <summary>
         /// Required designer variable.
@@ -139,7 +139,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Section_1
+            // Section1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,12 +158,12 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.HelpButton = true;
-            this.Name = "Section_1";
+            this.Name = "Section1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Section 1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Section_1_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Section_1_FormClosed);
-            this.Load += new System.EventHandler(this.Section_1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Section1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Section1_FormClosed);
+            this.Load += new System.EventHandler(this.Section1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
