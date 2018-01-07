@@ -33,7 +33,14 @@ namespace BusinessPlanWriter
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add Table Button");
+        }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add Chart Button");
+        }
     }
 }

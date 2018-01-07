@@ -38,6 +38,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.createTable1 = new System.Windows.Forms.Button();
+            this.createTable2 = new System.Windows.Forms.Button();
+            this.createTable3 = new System.Windows.Forms.Button();
+            this.createTable4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -139,6 +143,46 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // createTable1
+            // 
+            this.createTable1.Location = new System.Drawing.Point(463, 161);
+            this.createTable1.Name = "createTable1";
+            this.createTable1.Size = new System.Drawing.Size(88, 23);
+            this.createTable1.TabIndex = 10;
+            this.createTable1.Text = "Create Table";
+            this.createTable1.UseVisualStyleBackColor = true;
+            this.createTable1.Click += new System.EventHandler(this.createTable1_Click);
+            // 
+            // createTable2
+            // 
+            this.createTable2.Location = new System.Drawing.Point(463, 315);
+            this.createTable2.Name = "createTable2";
+            this.createTable2.Size = new System.Drawing.Size(88, 23);
+            this.createTable2.TabIndex = 11;
+            this.createTable2.Text = "Create Table";
+            this.createTable2.UseVisualStyleBackColor = true;
+            this.createTable2.Click += new System.EventHandler(this.createTable2_Click);
+            // 
+            // createTable3
+            // 
+            this.createTable3.Location = new System.Drawing.Point(463, 434);
+            this.createTable3.Name = "createTable3";
+            this.createTable3.Size = new System.Drawing.Size(88, 23);
+            this.createTable3.TabIndex = 12;
+            this.createTable3.Text = "Create Table";
+            this.createTable3.UseVisualStyleBackColor = true;
+            this.createTable3.Click += new System.EventHandler(this.createTable3_Click);
+            // 
+            // createTable4
+            // 
+            this.createTable4.Location = new System.Drawing.Point(463, 564);
+            this.createTable4.Name = "createTable4";
+            this.createTable4.Size = new System.Drawing.Size(88, 23);
+            this.createTable4.TabIndex = 13;
+            this.createTable4.Text = "Create Table";
+            this.createTable4.UseVisualStyleBackColor = true;
+            this.createTable4.Click += new System.EventHandler(this.createTable4_Click);
+            // 
             // Section1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,6 +191,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(594, 614);
+            this.Controls.Add(this.createTable4);
+            this.Controls.Add(this.createTable3);
+            this.Controls.Add(this.createTable2);
+            this.Controls.Add(this.createTable1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox4);
@@ -181,5 +229,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button createTable1;
+        private System.Windows.Forms.Button createTable2;
+        private System.Windows.Forms.Button createTable3;
+        private System.Windows.Forms.Button createTable4;
     }
 }
