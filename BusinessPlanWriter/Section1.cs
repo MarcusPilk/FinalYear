@@ -22,6 +22,7 @@ namespace BusinessPlanWriter
         public Section1()
         {
             InitializeComponent();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -63,6 +64,17 @@ namespace BusinessPlanWriter
             Range range = ws.Range["A1", "D1"];
 
             range.Value = strArray;
+
+            if (!Globals.ThisAddIn.IsDirectoryEmpty("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages"))
+            {
+                Range oRange = ws.Cells[2, 1];
+                float Left = (float)((double)oRange.Left);
+                float Top = (float)((double)oRange.Top);
+                const float ImageSize = 200;
+                ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\chart1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize*2, ImageSize);
+
+            }
+
         }
 
 
@@ -85,6 +97,17 @@ namespace BusinessPlanWriter
         {
             //System.Windows.Forms.MessageBox.Show("Create Table Button");
             tableForm4.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Worksheet ws1 = Globals.ThisAddIn.GetWorksheet();
+            Range range1 = ws1.Range["A1", "D1"];
+
+            this.textBox1.Text = ws1.Range["A1", "A1"].get_Value();
+            this.textBox2.Text = ws1.Range["B1", "B1"].get_Value();
+            this.textBox3.Text = ws1.Range["C1", "C1"].get_Value();
+            this.textBox4.Text = ws1.Range["D1", "D1"].get_Value();
         }
     }
 }

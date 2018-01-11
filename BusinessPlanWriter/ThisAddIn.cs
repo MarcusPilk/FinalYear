@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace BusinessPlanWriter
             myCustomTaskPane = this.CustomTaskPanes.Add(myUserControl1, "Business Plan Writer");
             myCustomTaskPane.VisibleChanged += new EventHandler(myCustomTaskPane_VisibleChanged);
         }
+
+        public bool IsDirectoryEmpty(string path) => !Directory.EnumerateFileSystemEntries(path).Any();
 
 
 

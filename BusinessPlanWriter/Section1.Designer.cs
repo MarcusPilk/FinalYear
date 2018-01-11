@@ -42,6 +42,7 @@
             this.createTable2 = new System.Windows.Forms.Button();
             this.createTable3 = new System.Windows.Forms.Button();
             this.createTable4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -183,6 +184,16 @@
             this.createTable4.UseVisualStyleBackColor = true;
             this.createTable4.Click += new System.EventHandler(this.createTable4_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(415, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Read Cells";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Section1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +202,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(594, 614);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.createTable4);
             this.Controls.Add(this.createTable3);
             this.Controls.Add(this.createTable2);
@@ -233,5 +245,6 @@
         private System.Windows.Forms.Button createTable2;
         private System.Windows.Forms.Button createTable3;
         private System.Windows.Forms.Button createTable4;
+        private System.Windows.Forms.Button button2;
     }
 }
