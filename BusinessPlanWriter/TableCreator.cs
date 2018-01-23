@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Office.Interop.Excel;
 using Spire.Pdf.General.Render.Font.OpenTypeFile;
 using Spire.Xls;
@@ -114,7 +115,11 @@ namespace BusinessPlanWriter
             {
                 yield return array[row, i];
             }
+
         }
+
+        
+
 
 
 
@@ -170,6 +175,26 @@ namespace BusinessPlanWriter
 
         }
 
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedItem.ToString().Trim())
+            {
+                case "Bar":
+                    chart1.Series[0].ChartType = SeriesChartType.Bar;
+                    break;
+                case "Column":
+                    chart1.Series[0].ChartType = SeriesChartType.Column;
+                    break;
+                case "Pie":
+                    chart1.Series[0].ChartType = SeriesChartType.Pie;
+                    break;
+                case "Line":
+                    chart1.Series[0].ChartType = SeriesChartType.Line;
+                    break;
+                default:
+                    chart1.Series[0].ChartType = SeriesChartType.Bar;
+                    break;
+            }
+        }
     }
 }

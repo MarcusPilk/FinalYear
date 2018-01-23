@@ -73,7 +73,7 @@ namespace BusinessPlanWriter
                 const float ImageSize = 200;
                 ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\chart1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize*2, ImageSize);
 
-            }
+            } 
 
         }
 
