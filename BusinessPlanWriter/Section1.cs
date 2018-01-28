@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using Spire.Xls;
+using Worksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace BusinessPlanWriter
 {
     public partial class Section1 : Form
     {
-        Form tableForm1 = new TableCreator();
-        Form tableForm2 = new TableCreator();
-        Form tableForm3 = new TableCreator();
-        Form tableForm4 = new TableCreator();
+        Form tableForm1 = new TableCreator("1.1");
+        Form tableForm2 = new TableCreator("1.2");
+        Form tableForm3 = new TableCreator("1.3");
+        Form tableForm4 = new TableCreator("1.4");
 
 
         public Section1()
@@ -51,6 +53,23 @@ namespace BusinessPlanWriter
            e.Cancel = true;
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            try
+            {
+                Worksheet ws1 = Globals.ThisAddIn.GetWorksheet();
+
+                this.textBox1.Text = ws1.Range["A2", "A2"].get_Value();
+                this.textBox2.Text = ws1.Range["A4", "A4"].get_Value();
+                this.textBox3.Text = ws1.Range["A6", "A6"].get_Value();
+                this.textBox4.Text = ws1.Range["A8", "A8"].get_Value();
+            }
+            catch (Exception exception)
+            {
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -58,20 +77,87 @@ namespace BusinessPlanWriter
             var text2 = this.textBox2.Text;
             var text3 = this.textBox3.Text;
             var text4 = this.textBox4.Text;
-            String[] strArray = new string[] { text1,text2, text3, text4 };
 
             Worksheet ws = Globals.ThisAddIn.GetWorksheet();
-            Range range = ws.Range["A1", "D1"];
+            ws.Cells[2, 1] = text1;
+            ws.Cells[4, 1] = text2;
+            ws.Cells[6, 1] = text3;
+            ws.Cells[8, 1] = text4;
 
-            range.Value = strArray;
+            
+
+
+
 
             if (!Globals.ThisAddIn.IsDirectoryEmpty("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages"))
             {
-                Range oRange = ws.Cells[2, 1];
-                float Left = (float)((double)oRange.Left);
-                float Top = (float)((double)oRange.Top);
-                const float ImageSize = 200;
-                ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\chart1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize*2, ImageSize);
+                //Insert Chart 1
+                try
+                {
+                    Range oRange = ws.Cells[3, 1];
+                    oRange.ColumnWidth = 76;
+                    oRange.RowHeight = 200;
+                    float Left = (float)((double)oRange.Left);
+                    float Top = (float)((double)oRange.Top);
+                    const float ImageSize = 200;
+                    Shape picture = ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    picture.Placement = XlPlacement.xlMoveAndSize;
+                }
+                catch (Exception exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.1");
+                }
+
+                //Insert Chart 2
+                try
+                {
+                    Range oRange = ws.Cells[5, 1];
+                    oRange.ColumnWidth = 76;
+                    oRange.RowHeight = 200;
+                    float Left = (float)((double)oRange.Left);
+                    float Top = (float)((double)oRange.Top);
+                    const float ImageSize = 200;
+                    Shape picture = ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.2.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    picture.Placement = XlPlacement.xlMoveAndSize;
+                }
+                catch (Exception exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.2");
+                }
+
+                //Insert Chart 3
+                try
+                {
+                    Range oRange = ws.Cells[7, 1];
+                    oRange.ColumnWidth = 76;
+                    oRange.RowHeight = 200;
+                    float Left = (float)((double)oRange.Left);
+                    float Top = (float)((double)oRange.Top);
+                    const float ImageSize = 200;
+                    Shape picture = ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.3.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    picture.Placement = XlPlacement.xlMoveAndSize;
+                }
+                catch (Exception exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.3");
+                }
+
+                //Insert Chart 4
+                try
+                {
+                    Range oRange = ws.Cells[9, 1];
+                    oRange.ColumnWidth = 76;
+                    oRange.RowHeight = 200;
+                    float Left = (float)((double)oRange.Left);
+                    float Top = (float)((double)oRange.Top);
+                    const float ImageSize = 200;
+                    Shape picture = ws.Shapes.AddPicture("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.4.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    picture.Placement = XlPlacement.xlMoveAndSize;
+                }
+                catch (Exception exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.4");
+                }
 
             } 
 
@@ -82,6 +168,7 @@ namespace BusinessPlanWriter
         {
             //System.Windows.Forms.MessageBox.Show("Create Table Button");
             tableForm1.Show();
+            
         }
         private void createTable2_Click(object sender, EventArgs e)
         {
@@ -102,12 +189,11 @@ namespace BusinessPlanWriter
         private void button2_Click(object sender, EventArgs e)
         {
             Worksheet ws1 = Globals.ThisAddIn.GetWorksheet();
-            Range range1 = ws1.Range["A1", "D1"];
 
-            this.textBox1.Text = ws1.Range["A1", "A1"].get_Value();
-            this.textBox2.Text = ws1.Range["B1", "B1"].get_Value();
-            this.textBox3.Text = ws1.Range["C1", "C1"].get_Value();
-            this.textBox4.Text = ws1.Range["D1", "D1"].get_Value();
+            this.textBox1.Text = ws1.Range["A2", "A2"].get_Value();
+            this.textBox2.Text = ws1.Range["A4", "A4"].get_Value();
+            this.textBox3.Text = ws1.Range["A6", "A6"].get_Value();
+            this.textBox4.Text = ws1.Range["A8", "A8"].get_Value();
         }
     }
 }

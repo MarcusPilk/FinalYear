@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Office.Interop.Excel;
 using Spire.Pdf.General.Render.Font.OpenTypeFile;
 using Spire.Xls;
+using Series = Microsoft.Office.Interop.Excel.Series;
 
 namespace BusinessPlanWriter
 {
@@ -23,11 +25,13 @@ namespace BusinessPlanWriter
         //public static DataTable dataTable = new DataTable();
         private String[,] dataArrayList;
         private String[,] dataSeriesList;
+        private String name;
 
 
-        public TableCreator()
+        public TableCreator(String name)
         {
             InitializeComponent();
+            this.name = name;
 
 
 //            int height = Screen.PrimaryScreen.WorkingArea.Height;
@@ -76,7 +80,7 @@ namespace BusinessPlanWriter
                 c++;
                 y++;
             }
-            chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\chart1.png", System.Drawing.Imaging.ImageFormat.Png);
+            chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\"+name+ ".png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
 
@@ -180,19 +184,44 @@ namespace BusinessPlanWriter
             switch (comboBox1.SelectedItem.ToString().Trim())
             {
                 case "Bar":
-                    chart1.Series[0].ChartType = SeriesChartType.Bar;
+                    foreach (var series in chart1.Series)
+                    {
+                        series.ChartType = SeriesChartType.Bar;
+                    }
+                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
                     break;
                 case "Column":
-                    chart1.Series[0].ChartType = SeriesChartType.Column;
+                    foreach (var series in chart1.Series)
+                    {
+                        series.ChartType = SeriesChartType.Column;
+                    }
+                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
                     break;
                 case "Pie":
-                    chart1.Series[0].ChartType = SeriesChartType.Pie;
+                    foreach (var series in chart1.Series)
+                    {
+                        series.ChartType = SeriesChartType.Pie;
+                    }
+                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
                     break;
                 case "Line":
-                    chart1.Series[0].ChartType = SeriesChartType.Line;
+                    foreach (var series in chart1.Series)
+                    {
+                        series.ChartType = SeriesChartType.Line;
+                    }
+                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
                     break;
                 default:
-                    chart1.Series[0].ChartType = SeriesChartType.Bar;
+                    foreach (var series in chart1.Series)
+                    {
+                        series.ChartType = SeriesChartType.Column;
+                    }
+                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
                     break;
             }
         }

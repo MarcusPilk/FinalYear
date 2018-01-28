@@ -157,8 +157,8 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Bar",
             "Column",
+            "Bar",
             "Pie",
             "Line"});
             this.comboBox1.Location = new System.Drawing.Point(175, 580);
