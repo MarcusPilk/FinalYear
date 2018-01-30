@@ -53,22 +53,18 @@ namespace BusinessPlanWriter
            e.Cancel = true;
         }
 
-        protected override void OnShown(EventArgs e)
+
+        private void Section1_Activated(object sender, System.EventArgs e)
         {
-            base.OnShown(e);
-            try
-            {
                 Worksheet ws1 = Globals.ThisAddIn.GetWorksheet();
 
                 this.textBox1.Text = ws1.Range["A2", "A2"].get_Value();
-                this.textBox2.Text = ws1.Range["A4", "A4"].get_Value();
-                this.textBox3.Text = ws1.Range["A6", "A6"].get_Value();
-                this.textBox4.Text = ws1.Range["A8", "A8"].get_Value();
-            }
-            catch (Exception exception)
-            {
-            }
+                this.textBox2.Text = ws1.Range["A5", "A5"].get_Value();
+                this.textBox3.Text = ws1.Range["A8", "A8"].get_Value();
+                this.textBox4.Text = ws1.Range["A11", "A11"].get_Value();
+            
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -80,9 +76,9 @@ namespace BusinessPlanWriter
 
             Worksheet ws = Globals.ThisAddIn.GetWorksheet();
             ws.Cells[2, 1] = text1;
-            ws.Cells[4, 1] = text2;
-            ws.Cells[6, 1] = text3;
-            ws.Cells[8, 1] = text4;
+            ws.Cells[5, 1] = text2;
+            ws.Cells[8, 1] = text3;
+            ws.Cells[11, 1] = text4;
 
             
 
@@ -111,7 +107,7 @@ namespace BusinessPlanWriter
                 //Insert Chart 2
                 try
                 {
-                    Range oRange = ws.Cells[5, 1];
+                    Range oRange = ws.Cells[6, 1];
                     oRange.ColumnWidth = 76;
                     oRange.RowHeight = 200;
                     float Left = (float)((double)oRange.Left);
@@ -128,7 +124,7 @@ namespace BusinessPlanWriter
                 //Insert Chart 3
                 try
                 {
-                    Range oRange = ws.Cells[7, 1];
+                    Range oRange = ws.Cells[9, 1];
                     oRange.ColumnWidth = 76;
                     oRange.RowHeight = 200;
                     float Left = (float)((double)oRange.Left);
@@ -145,7 +141,7 @@ namespace BusinessPlanWriter
                 //Insert Chart 4
                 try
                 {
-                    Range oRange = ws.Cells[9, 1];
+                    Range oRange = ws.Cells[12, 1];
                     oRange.ColumnWidth = 76;
                     oRange.RowHeight = 200;
                     float Left = (float)((double)oRange.Left);
@@ -191,9 +187,9 @@ namespace BusinessPlanWriter
             Worksheet ws1 = Globals.ThisAddIn.GetWorksheet();
 
             this.textBox1.Text = ws1.Range["A2", "A2"].get_Value();
-            this.textBox2.Text = ws1.Range["A4", "A4"].get_Value();
-            this.textBox3.Text = ws1.Range["A6", "A6"].get_Value();
-            this.textBox4.Text = ws1.Range["A8", "A8"].get_Value();
+            this.textBox2.Text = ws1.Range["A5", "A5"].get_Value();
+            this.textBox3.Text = ws1.Range["A8", "A8"].get_Value();
+            this.textBox4.Text = ws1.Range["A11", "A11"].get_Value();
         }
     }
 }

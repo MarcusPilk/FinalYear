@@ -22,6 +22,7 @@ namespace BusinessPlanWriter
         private void toggleButton1_Click(object sender, RibbonControlEventArgs e)
         {
             Globals.ThisAddIn.TaskPane.Visible = ((RibbonToggleButton) sender).Checked;
+            Globals.ThisAddIn.TaskPane.Width = 285; // Changes default size of Task Pane when opened
         }
     }
 }
