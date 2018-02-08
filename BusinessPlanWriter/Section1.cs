@@ -27,25 +27,7 @@ namespace BusinessPlanWriter
             InitializeComponent();
         }
 
-        public void save_All(string path,SaveFileDialog saveFileDialog)
-        {
-            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
-            writer.WriteLine(textBox1.Text);
-            writer.WriteLine(tableForm1.save_All(path));
 
-            writer.WriteLine(textBox2.Text);
-            //writer.WriteLine(tableForm2.save_All(path));
-
-            writer.WriteLine(textBox3.Text);
-            //writer.WriteLine(tableForm3.save_All(path));
-
-            writer.WriteLine(textBox4.Text);
-            //writer.WriteLine(tableForm4.save_All(path));
-
-            writer.Dispose();
-            writer.Close();
-
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -211,6 +193,35 @@ namespace BusinessPlanWriter
             this.textBox2.Text = ws1.Range["A5", "A5"].get_Value();
             this.textBox3.Text = ws1.Range["A8", "A8"].get_Value();
             this.textBox4.Text = ws1.Range["A11", "A11"].get_Value();
+        }
+        public void save_All(string path, SaveFileDialog saveFileDialog)
+        {
+            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
+            writer.WriteLine(textBox1.Text.Replace(Environment.NewLine,"?</> "));
+            writer.WriteLine(tableForm1.save_All(path));
+
+            writer.WriteLine(textBox2.Text);
+            //writer.WriteLine(tableForm2.save_All(path));
+
+            writer.WriteLine(textBox3.Text);
+            //writer.WriteLine(tableForm3.save_All(path));
+
+            writer.WriteLine(textBox4.Text);
+            //writer.WriteLine(tableForm4.save_All(path));
+
+            writer.Dispose();
+            writer.Close();
+
+        }
+
+        public void load_All(OpenFileDialog openFileDialog)
+        {
+            StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+            textBox1.Text = reader.ReadLine().Replace("?</> ",Environment.NewLine);
+            tableForm1.load_All(openFileDialog, reader);
+            reader.Dispose();
+            reader.Close();
+            
         }
     }
 }

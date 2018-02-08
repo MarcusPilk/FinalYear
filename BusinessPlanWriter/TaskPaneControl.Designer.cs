@@ -134,6 +134,7 @@
             this.loadBP.TabIndex = 8;
             this.loadBP.Text = "Load";
             this.loadBP.UseVisualStyleBackColor = true;
+            this.loadBP.Click += new System.EventHandler(this.loadBP_Click);
             // 
             // saveBP
             // 

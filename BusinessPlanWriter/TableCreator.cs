@@ -10,12 +10,14 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Office.Interop.Excel;
 using Spire.Pdf.General.Render.Font.OpenTypeFile;
 using Spire.Xls;
+using ListBox = System.Windows.Forms.ListBox;
 using Series = Microsoft.Office.Interop.Excel.Series;
 
 namespace BusinessPlanWriter
@@ -174,26 +176,7 @@ namespace BusinessPlanWriter
             dataView.Columns.Clear();
         }
 
-        internal string save_All(string path)
-        {
-            String dataToString = "";
-            for (int i = 0; i <= dataArrayList.GetUpperBound(0) ; i++)
-            {
-                for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
-                {
-                    if (j == dataArrayList.GetUpperBound(1))
-                    {
-                        dataToString += dataArrayList[i, j] + "\r\n";
-                    }
-                    else
-                    {
-                        dataToString += dataArrayList[i, j] + ",";
-                    }
-                }
-            }
-            
-            return dataToString;
-        }
+
 
         private void TableCreator_Load(object sender, EventArgs e)
         {
@@ -245,6 +228,59 @@ namespace BusinessPlanWriter
 
                     break;
             }
+        }
+        internal string save_All(string path)
+        {
+            String dataToString = "";
+            dataToString += "ARRAY " + (dataArrayList.GetUpperBound(0) + 1) + "," + (dataArrayList.GetUpperBound(1) + 1) + "\r\n";
+            for (int i = 0; i <= dataArrayList.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
+                {
+                    if (j == dataArrayList.GetUpperBound(1) && i == dataArrayList.GetUpperBound(0))
+                    {
+                        dataToString += dataArrayList[i, j];
+                    }
+                    else
+                    {
+                        dataToString += dataArrayList[i, j] + ",";
+                    }
+                }
+            }
+            
+            return dataToString;
+        }
+
+        public void load_All(OpenFileDialog openFileDialog, StreamReader reader)
+        {
+            //reader.ReadLine(); // need to figure new way of determining what line to start at
+            String s = reader.ReadLine().Replace("ARRAY",String.Empty);
+            MessageBox.Show(s);
+            String[] elements = Regex.Split(s, ",");
+            MessageBox.Show(elements.ToString());
+            var x = Convert.ToInt32(elements[0]);
+            
+            var y = Convert.ToInt32(elements[1]);
+
+            String[] dataElements = Regex.Split(reader.ReadLine(), ",");
+            int e = 0;
+            dataView.ColumnCount = y;
+            for (int i = 0; i < x ; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+                
+                for (int j = 0; j < y; j++)
+                {
+                    row.Cells[j].Value = dataElements[e];
+                    e++;
+                }
+                dataView.Rows.Add(row);
+
+            }
+
+            submitTable_Click(this,EventArgs.Empty);
+
         }
     }
 }

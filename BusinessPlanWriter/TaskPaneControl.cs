@@ -161,5 +161,16 @@ namespace BusinessPlanWriter
             
             
         }
+
+        private void loadBP_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text File|*.txt";
+            openFileDialog.Title = "Open Business Plan";
+            openFileDialog.ShowDialog();
+
+            MessageBox.Show(openFileDialog.FileName);
+            form1.load_All(openFileDialog);
+        }
     }
 }
