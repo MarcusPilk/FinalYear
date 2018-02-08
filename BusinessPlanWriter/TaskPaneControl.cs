@@ -19,13 +19,13 @@ namespace BusinessPlanWriter
     public partial class TaskPaneControl : UserControl
     {
         //Stops new form opening when button is clicked twice
-        Form form1 = new Section1();
-        Form form2 = new Section2();
-        Form form3 = new Section3();
-        Form form4 = new Section4();
-        Form form5 = new Section5();
-        Form form6 = new Section6();
-        Form form7 = new Section7();
+        Section1 form1 = new Section1();
+        Section2 form2 = new Section2();
+        Section3 form3 = new Section3();
+        Section4 form4 = new Section4();
+        Section5 form5 = new Section5();
+        Section6 form6 = new Section6();
+        Section7 form7 = new Section7();
         CheckBox[] checkboxes;
        
 
@@ -140,6 +140,26 @@ namespace BusinessPlanWriter
         private void egBP_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveBP_Click(object sender, EventArgs e)
+        {
+            // Open file browser to choose specific save destination
+            //FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            //folderBrowser.ShowDialog();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text File|*.txt";
+            saveFileDialog.Title = "Save Business Plan";
+            saveFileDialog.ShowDialog();
+
+            string path = saveFileDialog.FileName;
+
+
+            MessageBox.Show(path);
+            form1.save_All(path,saveFileDialog);
+
+            
+            
         }
     }
 }

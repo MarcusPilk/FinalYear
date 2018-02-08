@@ -83,7 +83,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "1.1 Objectives";
+            this.label2.Text = "1.2 Objectives";
             // 
             // textBox2
             // 
@@ -102,7 +102,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "1.2 Mission";
+            this.label3.Text = "1.3 Mission";
             // 
             // textBox3
             // 
@@ -121,7 +121,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "1.3 Keys to Success";
+            this.label4.Text = "1.4 Keys to Success";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox4
@@ -198,7 +198,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(594, 614);

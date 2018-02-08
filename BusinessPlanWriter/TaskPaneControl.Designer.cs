@@ -143,6 +143,7 @@
             this.saveBP.TabIndex = 9;
             this.saveBP.Text = "Save";
             this.saveBP.UseVisualStyleBackColor = true;
+            this.saveBP.Click += new System.EventHandler(this.saveBP_Click);
             // 
             // egBP
             // 
@@ -160,7 +161,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(237, 23);
             this.progressBar1.Step = 1;
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 11;
             // 
             // checkBox1

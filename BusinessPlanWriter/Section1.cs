@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,15 +16,34 @@ namespace BusinessPlanWriter
 {
     public partial class Section1 : Form
     {
-        Form tableForm1 = new TableCreator("1.1");
-        Form tableForm2 = new TableCreator("1.2");
-        Form tableForm3 = new TableCreator("1.3");
-        Form tableForm4 = new TableCreator("1.4");
+        TableCreator tableForm1 = new TableCreator("1.1");
+        TableCreator tableForm2 = new TableCreator("1.2");
+        TableCreator tableForm3 = new TableCreator("1.3");
+        TableCreator tableForm4 = new TableCreator("1.4");
 
 
-        public Section1()
+        public Section1( )
         {
             InitializeComponent();
+        }
+
+        public void save_All(string path,SaveFileDialog saveFileDialog)
+        {
+            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
+            writer.WriteLine(textBox1.Text);
+            writer.WriteLine(tableForm1.save_All(path));
+
+            writer.WriteLine(textBox2.Text);
+            //writer.WriteLine(tableForm2.save_All(path));
+
+            writer.WriteLine(textBox3.Text);
+            //writer.WriteLine(tableForm3.save_All(path));
+
+            writer.WriteLine(textBox4.Text);
+            //writer.WriteLine(tableForm4.save_All(path));
+
+            writer.Dispose();
+            writer.Close();
 
         }
 
@@ -164,7 +184,8 @@ namespace BusinessPlanWriter
         {
             //System.Windows.Forms.MessageBox.Show("Create Table Button");
             tableForm1.Show();
-            
+            createTable1.Text = "Edit Table";
+
         }
         private void createTable2_Click(object sender, EventArgs e)
         {

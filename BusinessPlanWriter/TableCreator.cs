@@ -174,6 +174,27 @@ namespace BusinessPlanWriter
             dataView.Columns.Clear();
         }
 
+        internal string save_All(string path)
+        {
+            String dataToString = "";
+            for (int i = 0; i <= dataArrayList.GetUpperBound(0) ; i++)
+            {
+                for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
+                {
+                    if (j == dataArrayList.GetUpperBound(1))
+                    {
+                        dataToString += dataArrayList[i, j] + "\r\n";
+                    }
+                    else
+                    {
+                        dataToString += dataArrayList[i, j] + ",";
+                    }
+                }
+            }
+            
+            return dataToString;
+        }
+
         private void TableCreator_Load(object sender, EventArgs e)
         {
 
