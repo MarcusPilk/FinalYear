@@ -251,13 +251,13 @@ namespace BusinessPlanWriter
             return dataToString;
         }
 
+        // Parsing reader means it continues from where it stopped.
         public void load_All(OpenFileDialog openFileDialog, StreamReader reader)
         {
-            //reader.ReadLine(); // need to figure new way of determining what line to start at
-            String s = reader.ReadLine().Replace("ARRAY",String.Empty);
-            MessageBox.Show(s);
+            String s = reader.ReadLine().Replace("ARRAY",String.Empty); // debug
+            //MessageBox.Show(s); //debug 
             String[] elements = Regex.Split(s, ",");
-            MessageBox.Show(elements.ToString());
+            //MessageBox.Show(elements.ToString()); //debug
             var x = Convert.ToInt32(elements[0]);
             
             var y = Convert.ToInt32(elements[1]);
@@ -279,7 +279,7 @@ namespace BusinessPlanWriter
 
             }
 
-            submitTable_Click(this,EventArgs.Empty);
+            submitTable_Click(this,EventArgs.Empty);//recreate table
 
         }
     }
