@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Section2));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CompanySummary = new System.Windows.Forms.TabPage();
             this.StartupSummary = new System.Windows.Forms.TabPage();
@@ -141,6 +142,7 @@
             this.ClientSize = new System.Drawing.Size(594, 614);
             this.Controls.Add(this.tabControl1);
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Section2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Section 2";

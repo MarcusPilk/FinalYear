@@ -254,14 +254,10 @@ namespace BusinessPlanWriter
         // Parsing reader means it continues from where it stopped.
         public void load_All(OpenFileDialog openFileDialog, StreamReader reader)
         {
-            String s = reader.ReadLine().Replace("ARRAY",String.Empty); // debug
-            //MessageBox.Show(s); //debug 
+            String s = reader.ReadLine().Replace("ARRAY",String.Empty); 
             String[] elements = Regex.Split(s, ",");
-            //MessageBox.Show(elements.ToString()); //debug
             var x = Convert.ToInt32(elements[0]);
-            
             var y = Convert.ToInt32(elements[1]);
-
             String[] dataElements = Regex.Split(reader.ReadLine(), ",");
             int e = 0;
             dataView.ColumnCount = y;
@@ -269,18 +265,14 @@ namespace BusinessPlanWriter
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(dataView);
-                
                 for (int j = 0; j < y; j++)
                 {
                     row.Cells[j].Value = dataElements[e];
                     e++;
                 }
                 dataView.Rows.Add(row);
-
             }
-
             submitTable_Click(this,EventArgs.Empty);//recreate table
-
         }
     }
 }
