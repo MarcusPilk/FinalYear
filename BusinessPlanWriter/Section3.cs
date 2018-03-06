@@ -19,12 +19,14 @@ namespace BusinessPlanWriter
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
+            
             this.Hide();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             this.Hide();
+            e.Cancel = true;
 
         }
 
@@ -32,5 +34,7 @@ namespace BusinessPlanWriter
         {
 
         }
+
+
     }
 }

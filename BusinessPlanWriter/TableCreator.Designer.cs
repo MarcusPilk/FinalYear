@@ -43,21 +43,26 @@
             this.incChart = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pasteData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataView
             // 
+            this.dataView.AllowDrop = true;
             this.dataView.AllowUserToOrderColumns = true;
             this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dataView.Location = new System.Drawing.Point(13, 78);
             this.dataView.Name = "dataView";
+            this.dataView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataView.Size = new System.Drawing.Size(569, 255);
             this.dataView.TabIndex = 0;
             // 
             // addColumn
             // 
+            this.addColumn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.addColumn.Location = new System.Drawing.Point(507, 48);
             this.addColumn.Name = "addColumn";
@@ -69,6 +74,7 @@
             // 
             // colName
             // 
+            this.colName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.colName.Location = new System.Drawing.Point(329, 48);
             this.colName.Name = "colName";
             this.colName.Size = new System.Drawing.Size(172, 20);
@@ -80,7 +86,7 @@
             this.submitTable.Name = "submitTable";
             this.submitTable.Size = new System.Drawing.Size(75, 23);
             this.submitTable.TabIndex = 3;
-            this.submitTable.Text = "Done";
+            this.submitTable.Text = "Refresh";
             this.submitTable.UseVisualStyleBackColor = true;
             this.submitTable.Click += new System.EventHandler(this.submitTable_Click);
             // 
@@ -97,6 +103,7 @@
             // 
             // delColumn
             // 
+            this.delColumn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.delColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.delColumn.Location = new System.Drawing.Point(248, 47);
             this.delColumn.Name = "delColumn";
@@ -108,6 +115,7 @@
             // 
             // chart1
             // 
+            this.chart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -168,6 +176,17 @@
             this.comboBox1.TabIndex = 10;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // pasteData
+            // 
+            this.pasteData.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.pasteData.Location = new System.Drawing.Point(13, 48);
+            this.pasteData.Name = "pasteData";
+            this.pasteData.Size = new System.Drawing.Size(75, 19);
+            this.pasteData.TabIndex = 11;
+            this.pasteData.Text = "Paste";
+            this.pasteData.UseVisualStyleBackColor = true;
+            this.pasteData.Click += new System.EventHandler(this.pasteData_Click);
+            // 
             // TableCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +195,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(594, 614);
+            this.Controls.Add(this.pasteData);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.incChart);
@@ -212,5 +232,6 @@
         private System.Windows.Forms.CheckBox incChart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button pasteData;
     }
 }

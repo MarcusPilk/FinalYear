@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -18,6 +19,26 @@ namespace BusinessPlanWriter
             myUserControl1 = new TaskPaneControl();
             myCustomTaskPane = this.CustomTaskPanes.Add(myUserControl1, "Business Plan Writer");
             myCustomTaskPane.VisibleChanged += new EventHandler(myCustomTaskPane_VisibleChanged);
+
+
+            Office.CommandBar cellbar = this.Application.CommandBars["Cell"];
+            Office.CommandBarButton button = (Office.CommandBarButton)cellbar.FindControl(Office.MsoControlType.msoControlButton, 0, "MYRIGHTCLICKMENU", Missing.Value, Missing.Value);
+            if (button == null)
+            {
+                // add the button
+                button = (Office.CommandBarButton)cellbar.Controls.Add(Office.MsoControlType.msoControlButton, Missing.Value, Missing.Value, cellbar.Controls.Count, true);
+                button.Caption = "Check Selection";
+                button.BeginGroup = true;
+                button.Tag = "MYRIGHTCLICKMENU";
+                button.Click += new Office._CommandBarButtonEvents_ClickEventHandler(MyButton_Click);
+            }
+
+        }
+
+        private void MyButton_Click(Office.CommandBarButton ctrl, ref bool canceldefault)
+        {
+            Excel.Range selection = Globals.ThisAddIn.Application.Selection as Excel.Range;
+            MessageBox.Show(GetWorksheet().Name + "!"+selection.AddressLocal);
         }
 
         public bool IsDirectoryEmpty(string path) => !Directory.EnumerateFileSystemEntries(path).Any();
@@ -35,6 +56,33 @@ namespace BusinessPlanWriter
             {
                 return myCustomTaskPane;
             }
+        }
+
+
+        public string checkCells(string text)
+        {
+            string output = "=\"";
+            foreach (string word in text.Split(' '))
+            {
+                if (word.StartsWith("<") && word.EndsWith(">"))
+                {
+                    //string cell = word.Split('<', '>')[1];
+                    //output += "'& " + GetWorksheet().Range[cell, cell].get_Value() + "&'";
+                    //output += "\"&" + cell + "&\" ";
+                    Excel.Range range = Globals.ThisAddIn.Application.InputBox("Please choose a range!",
+                        "Please choose a cell for referencing: " + word.Split('<', '>')[1], Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                        8);
+                    output += range.Text + " ";
+                }
+                else
+                {
+                    output += word + " ";
+                }
+            }
+            MessageBox.Show(output);
+
+            output += "\"";
+            return output;
         }
 
 

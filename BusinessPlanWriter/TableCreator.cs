@@ -54,35 +54,73 @@ namespace BusinessPlanWriter
             double x = 0.5;
             double y = 1.5;
             chart1.Series.Clear();
-
-            for (int i = 0;i < dataView.RowCount-1; i++)
+                                //row1 col 1                    //row2 col1
+            MessageBox.Show(array[0, 0].ToString() + "\r\n" + array[0,1].ToString());
+            //check if first col = row names
+            if (array[0, 0].Any(chr => char.IsLetter(chr)))
             {
-                string seriesName = "Row: " + (i + 1);
-                chart1.Series.Add(seriesName);
-            }
-
-            for (int i = 0; i <= array.GetUpperBound(1); i++)
-            {
-                ArrayList list = new ArrayList();
-
-                for (int j = 0; j <= array.GetUpperBound(0); j++)
+                for (int i = 0; i < dataView.RowCount - 1; i++)
                 {
-                    int strToInt = Convert.ToInt32(array[j, i]);
-                    list.Add(strToInt);
+                    string seriesName = array[0, i].ToString();
+                    chart1.Series.Add(seriesName);
                 }
-                chart1.Series[i].Points.DataBindY(list);
 
+                for (int i = 0; i <= array.GetUpperBound(1); i++)
+                {
+                    ArrayList list = new ArrayList();
 
+                    for (int j = 1; j <= array.GetUpperBound(0); j++)
+                    {
+                        int strToInt = Convert.ToInt32(array[j, i]);
+                        list.Add(strToInt);
+                    }
+                    chart1.Series[i].Points.DataBindY(list);
+
+              }
+
+                int c = 1;
+
+                for (int i = 1; i < dataView.ColumnCount ; i++)
+                {
+                    chart1.ChartAreas[0].AxisX.CustomLabels.Add(x, y, dataView.Columns[i].Name);
+                    x++;
+                    y++;
+                }
             }
-            int c = 0;
-            foreach (var VARIABLE in dataView.Columns)
+            else
             {
-                chart1.ChartAreas[0].AxisX.CustomLabels.Add(x, y,dataView.Columns[c].Name );
-                x++;
-                c++;
-                y++;
+
+                for (int i = 0; i < dataView.RowCount - 1; i++)
+                {
+                    string seriesName = "Row: " + (i + 1);
+                    chart1.Series.Add(seriesName);
+                }
+
+                for (int i = 0; i <= array.GetUpperBound(1); i++)
+                {
+                    ArrayList list = new ArrayList();
+
+                    for (int j = 0; j <= array.GetUpperBound(0); j++)
+                    {
+                        int strToInt = Convert.ToInt32(array[j, i]);
+                        list.Add(strToInt);
+                    }
+                    chart1.Series[i].Points.DataBindY(list);
+
+
+                }
+                int c = 0;
+                foreach (var VARIABLE in dataView.Columns)
+                {
+                    chart1.ChartAreas[0].AxisX.CustomLabels.Add(x, y, dataView.Columns[c].Name);
+                    x++;
+                    c++;
+                    y++;
+                }
             }
-            chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\"+name+ ".png", System.Drawing.Imaging.ImageFormat.Png);
+
+            
+            chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\"+name+ ".png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
 
@@ -133,7 +171,6 @@ namespace BusinessPlanWriter
         {
             int rows = dataView.RowCount-1;
             int cols = dataView.ColumnCount;
-            Console.Out.WriteLine(rows + "  " + cols);
             dataArrayList = new string[rows,cols]; //check for null
             for (int i = 0; i < rows; i++)
             {
@@ -142,7 +179,11 @@ namespace BusinessPlanWriter
                     dataArrayList[i, j] = dataView.Rows[i].Cells[j].Value.ToString();
                 }
             }
-
+            //check if first col = row names
+            if (dataArrayList[0, 0].Any(x => !char.IsLetter(x)))
+            {
+                
+            }
             dataSeriesList = new string[cols,rows];
             for (int i = 0 ; i <= dataSeriesList.GetUpperBound(0); i++)
             {
@@ -167,7 +208,16 @@ namespace BusinessPlanWriter
 
         private void delColumn_Click(object sender, EventArgs e)
         {
-            dataView.Columns.RemoveAt(dataView.ColumnCount-1);
+            if (dataView.CurrentCell == null)
+            {
+                dataView.Columns.RemoveAt(dataView.ColumnCount - 1);
+
+            }
+            else
+            {
+                dataView.Columns.RemoveAt(dataView.CurrentCell.ColumnIndex);
+
+            }
         }
 
         private void resetTable_Click(object sender, EventArgs e)
@@ -192,7 +242,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Bar;
                     }
-                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Column":
@@ -200,15 +250,16 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Column;
                     }
-                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Pie":
+                    MessageBox.Show("Please be aware, if you have more than one row filled in, the Pie Chart will not show correctly.\r\nPlease choose a different chart to prevent loss of data during display ");
                     foreach (var series in chart1.Series)
                     {
                         series.ChartType = SeriesChartType.Pie;
                     }
-                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Line":
@@ -216,7 +267,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Line;
                     }
-                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 default:
@@ -224,7 +275,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Column;
                     }
-                    chart1.SaveImage("E:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
             }
@@ -273,6 +324,46 @@ namespace BusinessPlanWriter
                 dataView.Rows.Add(row);
             }
             submitTable_Click(this,EventArgs.Empty);//recreate table
+        }
+
+        private void pasteData_Click(object sender, EventArgs e)
+        {
+            DataObject o = (DataObject)Clipboard.GetDataObject();
+            if (o.GetDataPresent(DataFormats.Text))
+            {
+                if (dataView.RowCount > 0)
+                    dataView.Rows.Clear();
+
+                if (dataView.ColumnCount > 0)
+                    dataView.Columns.Clear();
+
+                bool columnsAdded = false;
+                string[] pastedRows = Regex.Split(o.GetData(DataFormats.Text).ToString().TrimEnd("\r\n".ToCharArray()), "\r\n");
+                int j = 0;
+                foreach (string pastedRow in pastedRows)
+                {
+                    string[] pastedRowCells = pastedRow.Split(new char[] { '\t' });
+
+                    if (!columnsAdded)
+                    {
+                        for (int i = 0; i < pastedRowCells.Length; i++)
+                            dataView.Columns.Add(pastedRowCells[i], pastedRowCells[i]);
+
+                        columnsAdded = true;
+                        continue;
+                    }
+
+                    dataView.Rows.Add();
+                    int myRowIndex = dataView.Rows.Count - 1;
+
+                    using (DataGridViewRow myDataGridViewRow = dataView.Rows[j])
+                    {
+                        for (int i = 0; i < pastedRowCells.Length; i++)
+                            myDataGridViewRow.Cells[i].Value = pastedRowCells[i];
+                    }
+                    j++;
+                }
+            }
         }
     }
 }

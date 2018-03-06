@@ -24,6 +24,7 @@ namespace BusinessPlanWriter
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             this.Hide();
+            e.Cancel = true;
 
         }
 
