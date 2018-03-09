@@ -238,6 +238,7 @@
             this.pdfButton.Text = "Produce PDF";
             this.pdfButton.UseVisualStyleBackColor = true;
             this.pdfButton.Visible = false;
+            this.pdfButton.Click += new System.EventHandler(this.pdfButton_Click);
             // 
             // TaskPaneControl
             // 

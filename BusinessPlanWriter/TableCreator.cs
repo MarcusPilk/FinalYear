@@ -28,6 +28,7 @@ namespace BusinessPlanWriter
         private String[,] dataArrayList;
         private String[,] dataSeriesList;
         private String name;
+        private static int chartPalette = 0;
 
 
         public TableCreator(String name)
@@ -283,47 +284,64 @@ namespace BusinessPlanWriter
         internal string save_All(string path)
         {
             String dataToString = "";
-            dataToString += "ARRAY " + (dataArrayList.GetUpperBound(0) + 1) + "," + (dataArrayList.GetUpperBound(1) + 1) + "\r\n";
-            for (int i = 0; i <= dataArrayList.GetUpperBound(0); i++)
+            if (dataArrayList == null)
             {
-                for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
+                return "ARRAY EMPTY";
+            }
+            else
+            {
+                dataToString += "ARRAY " + (dataArrayList.GetUpperBound(0) + 1) + "," +
+                                (dataArrayList.GetUpperBound(1) + 1) + "\r\n";
+                for (int i = 0; i <= dataArrayList.GetUpperBound(0); i++)
                 {
-                    if (j == dataArrayList.GetUpperBound(1) && i == dataArrayList.GetUpperBound(0))
+                    for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
                     {
-                        dataToString += dataArrayList[i, j];
-                    }
-                    else
-                    {
-                        dataToString += dataArrayList[i, j] + ",";
+                        if (j == dataArrayList.GetUpperBound(1) && i == dataArrayList.GetUpperBound(0))
+                        {
+                            dataToString += dataArrayList[i, j];
+                        }
+                        else
+                        {
+                            dataToString += dataArrayList[i, j] + ",";
+                        }
                     }
                 }
+                return dataToString;
             }
-            
-            return dataToString;
+
         }
 
         // Parsing reader means it continues from where it stopped.
         public void load_All(OpenFileDialog openFileDialog, StreamReader reader)
         {
-            String s = reader.ReadLine().Replace("ARRAY",String.Empty); 
-            String[] elements = Regex.Split(s, ",");
-            var x = Convert.ToInt32(elements[0]);
-            var y = Convert.ToInt32(elements[1]);
-            String[] dataElements = Regex.Split(reader.ReadLine(), ",");
-            int e = 0;
-            dataView.ColumnCount = y;
-            for (int i = 0; i < x ; i++)
+            
+            String s = reader.ReadLine();
+            if (s.Contains("ARRAY EMPTY"))
             {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataView);
-                for (int j = 0; j < y; j++)
-                {
-                    row.Cells[j].Value = dataElements[e];
-                    e++;
-                }
-                dataView.Rows.Add(row);
+                return;
             }
-            submitTable_Click(this,EventArgs.Empty);//recreate table
+            else
+            {
+                s = s.Replace("ARRAY", String.Empty);
+                String[] elements = Regex.Split(s, ",");
+                var x = Convert.ToInt32(elements[0]);
+                var y = Convert.ToInt32(elements[1]);
+                String[] dataElements = Regex.Split(reader.ReadLine(), ",");
+                int e = 0;
+                dataView.ColumnCount = y;
+                for (int i = 0; i < x; i++)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataView);
+                    for (int j = 0; j < y; j++)
+                    {
+                        row.Cells[j].Value = dataElements[e];
+                        e++;
+                    }
+                    dataView.Rows.Add(row);
+                }
+                submitTable_Click(this, EventArgs.Empty); //recreate table
+            }
         }
 
         private void pasteData_Click(object sender, EventArgs e)
@@ -363,6 +381,69 @@ namespace BusinessPlanWriter
                     }
                     j++;
                 }
+            }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+            switch (chartPalette%13)
+            {
+                case 0:
+                    chart1.Palette = ChartColorPalette.None;
+                    chartPalette++;
+                    break;
+                case 1:
+                    chart1.Palette = ChartColorPalette.Bright;
+                    chartPalette++;
+                    break;
+                case 2:
+                    chart1.Palette = ChartColorPalette.BrightPastel;
+                    chartPalette++;
+                    break;
+                case 3:
+                    chart1.Palette = ChartColorPalette.Berry;
+                    chartPalette++;
+                    break;
+                case 4:
+                    chart1.Palette = ChartColorPalette.Chocolate;
+                    chartPalette++;
+                    break;
+                case 5:
+                    chart1.Palette = ChartColorPalette.EarthTones;
+                    chartPalette++;
+                    break;
+                case 6:
+                    chart1.Palette = ChartColorPalette.Excel;
+                    chartPalette++;
+                    break;
+                case 7:
+                    chart1.Palette = ChartColorPalette.Fire;
+                    chartPalette++;
+                    break;
+                case 8:
+                    chart1.Palette = ChartColorPalette.Grayscale;
+                    chartPalette++;
+                    break;
+                case 9:
+                    chart1.Palette = ChartColorPalette.Light;
+                    chartPalette++;
+                    break;
+                case 10:
+                    chart1.Palette = ChartColorPalette.Pastel;
+                    chartPalette++;
+                    break;
+                case 11:
+                    chart1.Palette = ChartColorPalette.SeaGreen;
+                    chartPalette++;
+                    break;
+                case 12:
+                    chart1.Palette = ChartColorPalette.SemiTransparent;
+                    chartPalette++;
+                    break;
+                    default:
+                        chart1.Palette = ChartColorPalette.Pastel;
+                        chartPalette++;
+                        break;
             }
         }
     }

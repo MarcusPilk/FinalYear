@@ -7,8 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
+using Word = Microsoft.Office.Interop.Word;
 using Microsoft.Office.Tools;
+using Office = Microsoft.Office.Core;
 
 namespace BusinessPlanWriter
 {
@@ -61,7 +62,7 @@ namespace BusinessPlanWriter
 
         public string checkCells(string text)
         {
-            string output = "=\"";
+            string output = "";
             foreach (string word in text.Split(' '))
             {
                 if (word.StartsWith("<") && word.EndsWith(">"))
@@ -79,9 +80,8 @@ namespace BusinessPlanWriter
                     output += word + " ";
                 }
             }
-            MessageBox.Show(output);
+            //MessageBox.Show(output);
 
-            output += "\"";
             return output;
         }
 

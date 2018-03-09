@@ -39,11 +39,10 @@
             this.resetTable = new System.Windows.Forms.Button();
             this.delColumn = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.incTable = new System.Windows.Forms.CheckBox();
-            this.incChart = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pasteData = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +51,7 @@
             // 
             this.dataView.AllowDrop = true;
             this.dataView.AllowUserToOrderColumns = true;
+            this.dataView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dataView.Location = new System.Drawing.Point(13, 78);
@@ -122,6 +122,7 @@
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 340);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series1.Legend = "Legend1";
@@ -130,26 +131,7 @@
             this.chart1.Size = new System.Drawing.Size(570, 234);
             this.chart1.TabIndex = 6;
             this.chart1.Text = "chart1";
-            // 
-            // incTable
-            // 
-            this.incTable.AutoSize = true;
-            this.incTable.Location = new System.Drawing.Point(501, 585);
-            this.incTable.Name = "incTable";
-            this.incTable.Size = new System.Drawing.Size(91, 17);
-            this.incTable.TabIndex = 7;
-            this.incTable.Text = "Include Table";
-            this.incTable.UseVisualStyleBackColor = true;
-            // 
-            // incChart
-            // 
-            this.incChart.AutoSize = true;
-            this.incChart.Location = new System.Drawing.Point(404, 586);
-            this.incChart.Name = "incChart";
-            this.incChart.Size = new System.Drawing.Size(89, 17);
-            this.incChart.TabIndex = 8;
-            this.incChart.Text = "Include Chart";
-            this.incChart.UseVisualStyleBackColor = true;
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // label1
             // 
@@ -187,6 +169,14 @@
             this.pasteData.UseVisualStyleBackColor = true;
             this.pasteData.Click += new System.EventHandler(this.pasteData_Click);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(404, 580);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(178, 21);
+            this.comboBox2.TabIndex = 12;
+            // 
             // TableCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,11 +185,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(594, 614);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.pasteData);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.incChart);
-            this.Controls.Add(this.incTable);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.delColumn);
             this.Controls.Add(this.resetTable);
@@ -228,10 +217,9 @@
         private System.Windows.Forms.Button resetTable;
         private System.Windows.Forms.Button delColumn;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.CheckBox incTable;
-        private System.Windows.Forms.CheckBox incChart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button pasteData;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

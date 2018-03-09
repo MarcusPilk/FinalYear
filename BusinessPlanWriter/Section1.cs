@@ -91,10 +91,10 @@ namespace BusinessPlanWriter
 
             if (!Globals.ThisAddIn.IsDirectoryEmpty("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages"))
             {
-                foreach (Shape shape in ws.Pictures())
+                //Avoids duplicate pictures of charts
+                foreach (Picture picture in ws.Pictures())
                 {
-                        shape.Delete();
-
+                    picture.Delete();
                 }
 
                 //Insert Chart 1
@@ -172,6 +172,28 @@ namespace BusinessPlanWriter
             } 
 
         }
+
+        public string getText(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    return textBox1.Text;
+                    break;
+                case 2:
+                    return textBox2.Text;
+                    break;
+                case 3:
+                    return textBox3.Text;
+                    break;
+                case 4:
+                    return textBox4.Text;
+                    break;
+
+            }
+            return "";
+        }
+
 
 
         private void createTable1_Click(object sender, EventArgs e)
