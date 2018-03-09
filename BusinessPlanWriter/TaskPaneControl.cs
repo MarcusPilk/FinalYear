@@ -142,7 +142,10 @@ namespace BusinessPlanWriter
 
         private void egBP_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = "D:\\Documents\\compTemplate.txt";
+            form1.load_All(openFileDialog);
+            MessageBox.Show("Example File Loaded Successfully!");
         }
 
         private void saveBP_Click(object sender, EventArgs e)

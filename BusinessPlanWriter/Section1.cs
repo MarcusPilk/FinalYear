@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
@@ -178,20 +179,25 @@ namespace BusinessPlanWriter
             switch (id)
             {
                 case 1:
-                    return textBox1.Text;
+                    return removeMultiLines(textBox1.Text);
                     break;
                 case 2:
-                    return textBox2.Text;
+                    return removeMultiLines(textBox2.Text);
                     break;
                 case 3:
-                    return textBox3.Text;
+                    return removeMultiLines(textBox3.Text);
                     break;
                 case 4:
-                    return textBox4.Text;
+                    return removeMultiLines(textBox4.Text);
                     break;
 
             }
             return "";
+        }
+        private string removeMultiLines(string original)
+        {
+            string formatted = Regex.Replace(original, @"(?:\r\n|\r(?!\n)|(?<!\r)\n){2,}", "\r\n");
+            return formatted;
         }
 
 

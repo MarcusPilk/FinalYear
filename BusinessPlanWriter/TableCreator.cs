@@ -55,8 +55,8 @@ namespace BusinessPlanWriter
             double x = 0.5;
             double y = 1.5;
             chart1.Series.Clear();
-                                //row1 col 1                    //row2 col1
-            MessageBox.Show(array[0, 0].ToString() + "\r\n" + array[0,1].ToString());
+                                 //row1 col 1                    //row2 col1
+            //MessageBox.Show(array[0, 0].ToString() + "\r\n" + array[0,1].ToString());
             //check if first col = row names
             if (array[0, 0].Any(chr => char.IsLetter(chr)))
             {
