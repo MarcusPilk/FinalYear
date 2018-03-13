@@ -66,9 +66,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(8, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 20);
+            this.label3.Size = new System.Drawing.Size(147, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Section 2";
+            this.label3.Text = "Company Summary";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -77,9 +77,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 20);
+            this.label4.Size = new System.Drawing.Size(167, 20);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Section 3";
+            this.label4.Text = "Products and Services";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
@@ -88,9 +88,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 20);
+            this.label5.Size = new System.Drawing.Size(120, 20);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Section 4";
+            this.label5.Text = "Market Analysis";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -99,9 +99,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(8, 218);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 20);
+            this.label6.Size = new System.Drawing.Size(190, 20);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Section 5";
+            this.label6.Text = "Implementation Summary";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -110,9 +110,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(8, 253);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 20);
+            this.label7.Size = new System.Drawing.Size(174, 20);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Section 6";
+            this.label7.Text = "Management Summary";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
@@ -121,9 +121,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(8, 288);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 20);
+            this.label8.Size = new System.Drawing.Size(107, 20);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Section 7";
+            this.label8.Text = "Financial Plan";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // loadBP
@@ -152,7 +152,7 @@
             this.egBP.Name = "egBP";
             this.egBP.Size = new System.Drawing.Size(75, 23);
             this.egBP.TabIndex = 10;
-            this.egBP.Text = "Example";
+            this.egBP.Text = "Template";
             this.egBP.UseVisualStyleBackColor = true;
             this.egBP.Click += new System.EventHandler(this.egBP_Click);
             // 

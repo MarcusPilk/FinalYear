@@ -81,9 +81,9 @@ namespace BusinessPlanWriter
 
             Worksheet ws = Globals.ThisAddIn.GetWorksheet();
             ws.Cells[2, 1] = Globals.ThisAddIn.checkCells(text1);
-            ws.Cells[5, 1] = text2;
-            ws.Cells[8, 1] = text3;
-            ws.Cells[11, 1] = text4;
+            ws.Cells[5, 1] = Globals.ThisAddIn.checkCells(text2); ;
+            ws.Cells[8, 1] = Globals.ThisAddIn.checkCells(text3); ;
+            ws.Cells[11, 1] = Globals.ThisAddIn.checkCells(text4); ;
 
             
 
@@ -113,7 +113,7 @@ namespace BusinessPlanWriter
                 }
                 catch (Exception exception)
                 {
-                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.1");
+                    //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.1");
                 }
 
                 //Insert Chart 2
@@ -131,7 +131,7 @@ namespace BusinessPlanWriter
                 }
                 catch (Exception exception)
                 {
-                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.2");
+                    //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.2");
                 }
 
                 //Insert Chart 3
@@ -149,7 +149,7 @@ namespace BusinessPlanWriter
                 }
                 catch (Exception exception)
                 {
-                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.3");
+                    //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.3");
                 }
 
                 //Insert Chart 4
@@ -167,7 +167,7 @@ namespace BusinessPlanWriter
                 }
                 catch (Exception exception)
                 {
-                    System.Windows.Forms.MessageBox.Show("No Chart for Section 1.4");
+                    //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.4");
                 }
 
             } 
@@ -179,7 +179,7 @@ namespace BusinessPlanWriter
             switch (id)
             {
                 case 1:
-                    return removeMultiLines(textBox1.Text);
+                    return removeMultiLines(Globals.ThisAddIn.checkCells(textBox1.Text));
                     break;
                 case 2:
                     return removeMultiLines(textBox2.Text);

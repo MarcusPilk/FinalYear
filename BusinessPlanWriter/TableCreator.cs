@@ -225,6 +225,8 @@ namespace BusinessPlanWriter
         {
             dataView.Rows.Clear();
             dataView.Columns.Clear();
+            chart1.Series.Clear();
+            chart1.Annotations.Clear();
         }
 
 
@@ -292,6 +294,12 @@ namespace BusinessPlanWriter
             {
                 dataToString += "ARRAY " + (dataArrayList.GetUpperBound(0) + 1) + "," +
                                 (dataArrayList.GetUpperBound(1) + 1) + "\r\n";
+                for (int i = 0; i <= dataArrayList.GetUpperBound(1); i++)
+                {
+                    dataToString += dataView.Columns[i].Name + ",";
+                }
+
+
                 for (int i = 0; i <= dataArrayList.GetUpperBound(0); i++)
                 {
                     for (int j = 0; j <= dataArrayList.GetUpperBound(1); j++)
@@ -329,6 +337,13 @@ namespace BusinessPlanWriter
                 String[] dataElements = Regex.Split(reader.ReadLine(), ",");
                 int e = 0;
                 dataView.ColumnCount = y;
+
+                for (int i=0; i < y ;i++)
+                {
+                    dataView.Columns[i].Name = dataElements[e];
+                    e++;
+                }
+
                 for (int i = 0; i < x; i++)
                 {
                     DataGridViewRow row = new DataGridViewRow();
