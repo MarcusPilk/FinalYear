@@ -35,6 +35,8 @@ namespace BusinessPlanWriter
             }
 
         }
+        public static string currency = "";
+
 
         private void MyButton_Click(Office.CommandBarButton ctrl, ref bool canceldefault)
         {
@@ -115,6 +117,26 @@ namespace BusinessPlanWriter
         }
         
         #endregion
+
+        public void setCurrency(string curr)
+        {
+            currency = curr;
+        }
+
+        public string getCurrency()
+        {
+            if (currency.Length.Equals(0))
+            {
+                MessageBox.Show("No currency selected");
+                return "";
+            }
+            else
+            {
+                return currency;
+            }
+        }
+
+
     }
 
 
