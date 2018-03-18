@@ -611,17 +611,22 @@ namespace BusinessPlanWriter
             String s = reader.ReadLine();
             if (s.Contains("ARRAY EMPTY"))
             {
-                return;
             }
             else
             {
                 s = s.Replace("ARRAY", String.Empty);
+                MessageBox.Show(s);
                 String[] elements = Regex.Split(s, ",");
                 var col = Convert.ToInt32(elements[0]);
                 var row = Convert.ToInt32(elements[1]);
                 String[] tableData = Regex.Split(reader.ReadLine(), ",");
                 int e = 0;
                 dataGridView1.ColumnCount = col;
+                dataGridView2.ColumnCount = col;
+                dataGridView3.ColumnCount = col;
+                dataGridView4.ColumnCount = col;
+                dataGridView5.ColumnCount = col;
+                MessageBox.Show(col.ToString() + "\r\n" + row.ToString());
                 for (int i = 0; i < col; i++)
                 {
                     if (tableData[e] == null || tableData[e] == "")
@@ -649,12 +654,51 @@ namespace BusinessPlanWriter
                         {
                             newRow.Cells[j].Value = tableData[e];
                         }
-                        dataGridView1.Rows.Add(newRow);
-
+                        e++;
                     }
+                    dataGridView1.Rows.Add(newRow);
+
                 }
-                
+
+
             }
+
+            s = reader.ReadLine();
+            if (s.Contains("ARRAY EMPTY"))
+            {
+            }
+            else
+            {
+                s = s.Replace("ARRAY", String.Empty);
+                String[] elements = Regex.Split(s, ",");
+                var col = Convert.ToInt32(elements[0]);
+                var row = Convert.ToInt32(elements[1]);
+                String[] tableData = Regex.Split(reader.ReadLine(), ",");
+                int e = 0;
+
+                for (int i = 0; i < row; i++)
+                {
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dataGridView3);
+                    for (int j = 0; j < col; j++)
+                    {
+                        if (tableData[e] == null || tableData[e] == "")
+                        {
+                            newRow.Cells[j].Value = "";
+                        }
+                        else
+                        {
+                            newRow.Cells[j].Value = tableData[e];
+                        }
+                        e++;
+                    }
+                    dataGridView3.Rows.Add(newRow);
+
+                }
+
+
+            }
+            updateDGV();
         }
     }
 }
