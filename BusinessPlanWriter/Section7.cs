@@ -181,7 +181,7 @@ namespace BusinessPlanWriter
                 else if (dataGridView2[col.Index, 0].Value == null)
                 {
                     dataGridView5[col.Index, 0].Value =
-                        (0 + Convert.ToDouble(dataGridView4[col.Index, 0].Value.ToString())).ToString();
+                        (0 - Convert.ToDouble(dataGridView4[col.Index, 0].Value.ToString())).ToString();
                 }
                 else if (dataGridView4[col.Index, 0].Value == null)
                 {
