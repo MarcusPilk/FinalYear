@@ -155,7 +155,7 @@ namespace BusinessPlanWriter
         {
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.FileName = "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\testingFP.txt";
+            openFileDialog.FileName = "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\Demonstration.txt";
             StreamReader reader = new StreamReader(openFileDialog.OpenFile());
             form1.load_All(openFileDialog, reader);
             form7.load_All(reader);
@@ -402,6 +402,7 @@ namespace BusinessPlanWriter
             }
 
             Range rnge = ws.Range["A1", form7.cellrg];
+            rnge.Interior.Color = Microsoft.Office.Interop.Excel.XlRgbColor.rgbWhite;
             rnge.CopyPicture(Microsoft.Office.Interop.Excel.XlPictureAppearance.xlScreen, Microsoft.Office.Interop.Excel.XlCopyPictureFormat.xlBitmap);
 
 
