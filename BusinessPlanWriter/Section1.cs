@@ -85,7 +85,10 @@ namespace BusinessPlanWriter
             ws.Cells[8, 1] = Globals.ThisAddIn.checkCells(text3); ;
             ws.Cells[11, 1] = Globals.ThisAddIn.checkCells(text4); ;
 
-            
+
+
+
+
 
 
 
@@ -114,6 +117,7 @@ namespace BusinessPlanWriter
                 catch (Exception exception)
                 {
                     //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.1");
+                    ws.Range["A3"].EntireRow.AutoFit();
                 }
 
                 //Insert Chart 2
@@ -132,6 +136,7 @@ namespace BusinessPlanWriter
                 catch (Exception exception)
                 {
                     //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.2");
+                    ws.Range["A6"].EntireRow.AutoFit();
                 }
 
                 //Insert Chart 3
@@ -150,6 +155,8 @@ namespace BusinessPlanWriter
                 catch (Exception exception)
                 {
                     //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.3");
+                    ws.Range["A9"].EntireRow.AutoFit();
+
                 }
 
                 //Insert Chart 4
@@ -168,9 +175,16 @@ namespace BusinessPlanWriter
                 catch (Exception exception)
                 {
                     //System.Windows.Forms.MessageBox.Show("No Chart for Section 1.4");
+                    ws.Range["A12"].EntireRow.AutoFit();
+
                 }
 
-            } 
+            }
+
+            ws.Range["A2"].EntireRow.AutoFit();
+            ws.Range["A5"].EntireRow.AutoFit();
+            ws.Range["A8"].EntireRow.AutoFit();
+            ws.Range["A11"].EntireRow.AutoFit();
 
         }
 

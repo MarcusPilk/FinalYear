@@ -69,6 +69,7 @@
             this.label3.Size = new System.Drawing.Size(147, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Company Summary";
+            this.label3.Visible = false;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -80,6 +81,7 @@
             this.label4.Size = new System.Drawing.Size(167, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Products and Services";
+            this.label4.Visible = false;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
@@ -91,6 +93,7 @@
             this.label5.Size = new System.Drawing.Size(120, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Market Analysis";
+            this.label5.Visible = false;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -102,6 +105,7 @@
             this.label6.Size = new System.Drawing.Size(190, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "Implementation Summary";
+            this.label6.Visible = false;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -113,6 +117,7 @@
             this.label7.Size = new System.Drawing.Size(174, 20);
             this.label7.TabIndex = 6;
             this.label7.Text = "Management Summary";
+            this.label7.Visible = false;
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
@@ -152,13 +157,13 @@
             this.egBP.Name = "egBP";
             this.egBP.Size = new System.Drawing.Size(75, 23);
             this.egBP.TabIndex = 10;
-            this.egBP.Text = "Template";
+            this.egBP.Text = "Example";
             this.egBP.UseVisualStyleBackColor = true;
             this.egBP.Click += new System.EventHandler(this.egBP_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 705);
+            this.progressBar1.Location = new System.Drawing.Point(12, 675);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(237, 23);
             this.progressBar1.Step = 1;
@@ -178,6 +183,8 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(234, 119);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
@@ -187,6 +194,8 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(234, 154);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(15, 14);
@@ -196,6 +205,8 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox4.Location = new System.Drawing.Point(234, 189);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(15, 14);
@@ -205,6 +216,8 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox5.Location = new System.Drawing.Point(234, 224);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(15, 14);
@@ -214,6 +227,8 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox6.Location = new System.Drawing.Point(234, 259);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(15, 14);
@@ -231,11 +246,11 @@
             // 
             // pdfButton
             // 
-            this.pdfButton.Location = new System.Drawing.Point(12, 734);
+            this.pdfButton.Location = new System.Drawing.Point(12, 703);
             this.pdfButton.Name = "pdfButton";
             this.pdfButton.Size = new System.Drawing.Size(237, 23);
             this.pdfButton.TabIndex = 19;
-            this.pdfButton.Text = "Produce PDF";
+            this.pdfButton.Text = "Produce Business Plan";
             this.pdfButton.UseVisualStyleBackColor = true;
             this.pdfButton.Visible = false;
             this.pdfButton.Click += new System.EventHandler(this.pdfButton_Click);
@@ -268,7 +283,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "TaskPaneControl";
-            this.Size = new System.Drawing.Size(263, 797);
+            this.Size = new System.Drawing.Size(263, 741);
             this.Load += new System.EventHandler(this.TaskPaneControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

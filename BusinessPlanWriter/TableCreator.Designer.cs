@@ -176,6 +176,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(178, 21);
             this.comboBox2.TabIndex = 12;
+            this.comboBox2.Visible = false;
             // 
             // TableCreator
             // 

@@ -419,8 +419,9 @@ namespace BusinessPlanWriter
 
             border = ws.Range[topR, cellrg].Borders;
             border[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlContinuous;
+            ws.Range["A1"].EntireColumn.AutoFit();
 
-
+            this.Hide();
 
         }
 
