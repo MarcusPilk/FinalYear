@@ -90,7 +90,7 @@ namespace BusinessPlanWriter
 
 
 
-            if (!Globals.ThisAddIn.IsDirectoryEmpty("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages"))
+            if (!Globals.ThisAddIn.IsDirectoryEmpty("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\"))
             {
                 //Avoids duplicate pictures of charts
                 foreach (Picture picture in ws.Pictures())
@@ -108,7 +108,7 @@ namespace BusinessPlanWriter
                     float Left = (float)((double)oRange.Left);
                     float Top = (float)((double)oRange.Top);
                     const float ImageSize = 200;
-                    Shape picture = ws.Shapes.AddPicture("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    Shape picture = ws.Shapes.AddPicture("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.1.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
                     picture.Placement = XlPlacement.xlMoveAndSize;
                 }
                 catch (Exception exception)
@@ -126,7 +126,7 @@ namespace BusinessPlanWriter
                     float Left = (float)((double)oRange.Left);
                     float Top = (float)((double)oRange.Top);
                     const float ImageSize = 200;
-                    Shape picture = ws.Shapes.AddPicture("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.2.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    Shape picture = ws.Shapes.AddPicture("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.2.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
                     picture.Placement = XlPlacement.xlMoveAndSize;
                 }
                 catch (Exception exception)
@@ -144,7 +144,7 @@ namespace BusinessPlanWriter
                     float Left = (float)((double)oRange.Left);
                     float Top = (float)((double)oRange.Top);
                     const float ImageSize = 200;
-                    Shape picture = ws.Shapes.AddPicture("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.3.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    Shape picture = ws.Shapes.AddPicture("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.3.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
                     picture.Placement = XlPlacement.xlMoveAndSize;
                 }
                 catch (Exception exception)
@@ -162,7 +162,7 @@ namespace BusinessPlanWriter
                     float Left = (float)((double)oRange.Left);
                     float Top = (float)((double)oRange.Top);
                     const float ImageSize = 200;
-                    Shape picture = ws.Shapes.AddPicture("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.4.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
+                    Shape picture = ws.Shapes.AddPicture("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.4.png", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize * 2, ImageSize);
                     picture.Placement = XlPlacement.xlMoveAndSize;
                 }
                 catch (Exception exception)

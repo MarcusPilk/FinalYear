@@ -23,6 +23,7 @@ namespace BusinessPlanWriter
 {
     public partial class Section7 : Form
     {
+        public string cellrg = ""; 
         public Section7()
         {
             InitializeComponent();
@@ -144,7 +145,7 @@ namespace BusinessPlanWriter
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Globals.ThisAddIn.setCurrency(comboBox1.SelectedItem.ToString());
-            MessageBox.Show(Globals.ThisAddIn.getCurrency());
+            MessageBox.Show("Currency changed to: " + Globals.ThisAddIn.getCurrency());
 
         }
 
@@ -311,7 +312,7 @@ namespace BusinessPlanWriter
             int range = 1;
             char c = 'A';
             string cellRngLength = ((char)(c + (dataGridView1.ColumnCount-1))).ToString();
-            string cellrg = cellRngLength + range;
+            cellrg = cellRngLength + range;
             Worksheet ws = Globals.ThisAddIn.GetWorksheet();
             ws.Cells[1, 1] = "Cash Flow Forecast";
             string cellRng = "A" + range;
@@ -615,7 +616,6 @@ namespace BusinessPlanWriter
             else
             {
                 s = s.Replace("ARRAY", String.Empty);
-                MessageBox.Show(s);
                 String[] elements = Regex.Split(s, ",");
                 var col = Convert.ToInt32(elements[0]);
                 var row = Convert.ToInt32(elements[1]);
@@ -626,7 +626,6 @@ namespace BusinessPlanWriter
                 dataGridView3.ColumnCount = col;
                 dataGridView4.ColumnCount = col;
                 dataGridView5.ColumnCount = col;
-                MessageBox.Show(col.ToString() + "\r\n" + row.ToString());
                 for (int i = 0; i < col; i++)
                 {
                     if (tableData[e] == null || tableData[e] == "")

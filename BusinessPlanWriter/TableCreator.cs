@@ -121,7 +121,9 @@ namespace BusinessPlanWriter
             }
 
             
-            chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\"+name+ ".png", System.Drawing.Imaging.ImageFormat.Png);
+            chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name+ ".png", System.Drawing.Imaging.ImageFormat.Png);
+            // C: \Users\admin\Source\Repos\BusinessPlanWriter\BPWChartImages
+            // C:\\Users\admin\Source\\Repos
         }
 
 
@@ -245,7 +247,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Bar;
                     }
-                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Column":
@@ -253,7 +255,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Column;
                     }
-                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Pie":
@@ -262,7 +264,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Pie;
                     }
-                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 case "Line":
@@ -270,7 +272,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Line;
                     }
-                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
                 default:
@@ -278,7 +280,7 @@ namespace BusinessPlanWriter
                     {
                         series.ChartType = SeriesChartType.Column;
                     }
-                    chart1.SaveImage("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    chart1.SaveImage("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\" + name + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
                     break;
             }

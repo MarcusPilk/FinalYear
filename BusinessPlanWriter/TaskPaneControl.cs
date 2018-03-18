@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ using Microsoft.Office.Interop.Word;
 using Microsoft.Office.Tools;
 using CheckBox = System.Windows.Forms.CheckBox;
 using Label = System.Windows.Forms.Label;
+using Range = Microsoft.Office.Interop.Excel.Range;
 using Table = Spire.Pdf.Exporting.XPS.Schema.Table;
 
 namespace BusinessPlanWriter
@@ -31,14 +33,15 @@ namespace BusinessPlanWriter
         Section6 form6 = new Section6();
         Section7 form7 = new Section7();
         CheckBox[] checkboxes;
-       
+
 
 
 
         public TaskPaneControl()
         {
             InitializeComponent();
-            this.checkboxes = new System.Windows.Forms.CheckBox[]{checkBox1,checkBox2,checkBox3,checkBox4,checkBox5,checkBox6,checkBox7};
+            this.checkboxes = new System.Windows.Forms.CheckBox[]
+                {checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7};
             foreach (System.Windows.Forms.CheckBox cb in checkboxes)
             {
                 cb.CheckedChanged += checkboxWasClicked;
@@ -47,7 +50,8 @@ namespace BusinessPlanWriter
 
         private void checkboxWasClicked(object sender, EventArgs e)
         {
-            progressBar1.Value = (int)(((float)this.checkboxes.Count(cb => cb.Checked) / this.checkboxes.Length) * 100);
+            progressBar1.Value =
+                (int) (((float) this.checkboxes.Count(cb => cb.Checked) / this.checkboxes.Length) * 100);
             if (progressBar1.Value == 100)
             {
                 pdfButton.Visible = true;
@@ -70,6 +74,7 @@ namespace BusinessPlanWriter
                 //System.Windows.Forms.MessageBox.Show("Section 1 Clicked");
             }
         }
+
         private void label3_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -80,6 +85,7 @@ namespace BusinessPlanWriter
                 form2.Show();
             }
         }
+
         private void label4_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -90,6 +96,7 @@ namespace BusinessPlanWriter
                 form3.Show();
             }
         }
+
         private void label5_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -100,6 +107,7 @@ namespace BusinessPlanWriter
                 form4.Show();
             }
         }
+
         private void label6_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -110,6 +118,7 @@ namespace BusinessPlanWriter
                 form5.Show();
             }
         }
+
         private void label7_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -120,6 +129,7 @@ namespace BusinessPlanWriter
                 form6.Show();
             }
         }
+
         private void label8_Click(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
@@ -145,9 +155,9 @@ namespace BusinessPlanWriter
         {
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.FileName = "D:\\Documents\\compTemplate.txt";
+            openFileDialog.FileName = "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\testingFP.txt";
             StreamReader reader = new StreamReader(openFileDialog.OpenFile());
-            form1.load_All(openFileDialog,reader);
+            form1.load_All(openFileDialog, reader);
             form7.load_All(reader);
             MessageBox.Show("Example File Loaded Successfully!");
             reader.Dispose();
@@ -166,13 +176,19 @@ namespace BusinessPlanWriter
 
             string path = saveFileDialog.FileName;
 
+            try
+            {
+                StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
+                form1.save_All(path, writer);
+                form7.save_All(writer, path);
+                writer.Dispose();
+                writer.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to save file. Please try again.");
+            }
 
-            MessageBox.Show(path);
-            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
-            form1.save_All(path,writer);
-            form7.save_All(writer,path);
-            writer.Dispose();
-            writer.Close();
 
 
 
@@ -185,12 +201,18 @@ namespace BusinessPlanWriter
             openFileDialog.Title = "Open Business Plan";
             openFileDialog.ShowDialog();
 
-            MessageBox.Show(openFileDialog.FileName);
-            StreamReader reader = new StreamReader(openFileDialog.OpenFile());
-            form1.load_All(openFileDialog,reader);
-            form7.load_All(reader);
-            reader.Dispose();
-            reader.Close();
+            try
+            {
+                StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+                form1.load_All(openFileDialog, reader);
+                form7.load_All(reader);
+                reader.Dispose();
+                reader.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Invalid or No Business Plan file selected");
+            }
 
         }
 
@@ -201,8 +223,7 @@ namespace BusinessPlanWriter
 
         private void createDoc()
         {
-            try
-            {
+
                 //Create an instance for word app
                 Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
 
@@ -216,17 +237,20 @@ namespace BusinessPlanWriter
                 object missing = System.Reflection.Missing.Value;
 
                 //Create a new document
-                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+                Microsoft.Office.Interop.Word.Document document =
+                    winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
 
 
                 //Add the footers into the document
                 foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
                 {
                     //Get the footer range and add the footer details.
-                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    Microsoft.Office.Interop.Word.Range footerRange = wordSection
+                        .Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
                     footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
                     footerRange.Font.Size = 10;
-                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.ParagraphFormat.Alignment =
+                        Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     footerRange.Text = DateTime.Today.ToLongDateString();
                 }
 
@@ -243,18 +267,109 @@ namespace BusinessPlanWriter
 
                 //Add 1.1
                 Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
-                para2.Range.Text = form1.getText(1) + Environment.NewLine; ;
+                para2.Range.Text = form1.getText(1) + Environment.NewLine;
+                ;
                 para2.Range.InsertParagraphAfter();
 
-                //Add Chart
+                //Add Chart 1.1
                 Microsoft.Office.Interop.Word.Paragraph para3 = document.Content.Paragraphs.Add(ref missing);
-                InlineShape pic = para3.Range.InlineShapes.AddPicture("D:\\Documents\\FinalProject\\BusinessPlanWriter\\BPWChartImages\\1.1.png");
-                
+                InlineShape pic =
+                    para3.Range.InlineShapes.AddPicture(
+                        "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.1.png");
+
+                //Add 1.2 Header
+                Microsoft.Office.Interop.Word.Paragraph para4 = document.Content.Paragraphs.Add(ref missing);
+                para4.Range.set_Style(ref styleHeading1);
+                para4.Range.Text = "Objectives";
+                para4.Range.InsertParagraphAfter();
+
+                //Add 1.2
+                Microsoft.Office.Interop.Word.Paragraph para5 = document.Content.Paragraphs.Add(ref missing);
+                para5.Range.Text = form1.getText(2) + Environment.NewLine;
+                ;
+                para5.Range.InsertParagraphAfter();
+
+                //Add Chart 1.2
+                try
+                {
+                    Microsoft.Office.Interop.Word.Paragraph para6 = document.Content.Paragraphs.Add(ref missing);
+                    pic = para6.Range.InlineShapes.AddPicture(
+                        "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.2.png");
+                }
+                catch
+                {
+                }
+
+                //Add 1.3 Header
+                Microsoft.Office.Interop.Word.Paragraph para7 = document.Content.Paragraphs.Add(ref missing);
+                para7.Range.set_Style(ref styleHeading1);
+                para7.Range.Text = "Mission";
+                para7.Range.InsertParagraphAfter();
+
+                //Add 1.3
+                Microsoft.Office.Interop.Word.Paragraph para8 = document.Content.Paragraphs.Add(ref missing);
+                para8.Range.Text = form1.getText(3) + Environment.NewLine;
+                ;
+                para8.Range.InsertParagraphAfter();
+
+                //Add Chart 1.3
+                try
+                {
+                    Microsoft.Office.Interop.Word.Paragraph para9 = document.Content.Paragraphs.Add(ref missing);
+                    pic = para9.Range.InlineShapes.AddPicture(
+                        "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.3.png");
+                }
+                catch
+                {
+                }
+
+                //Add 1.4 Header
+                Microsoft.Office.Interop.Word.Paragraph para10 = document.Content.Paragraphs.Add(ref missing);
+                para10.Range.set_Style(ref styleHeading1);
+                para10.Range.Text = "Keys to Success";
+                para10.Range.InsertParagraphAfter();
+
+                //Add 1.4
+                Microsoft.Office.Interop.Word.Paragraph para11 = document.Content.Paragraphs.Add(ref missing);
+                para11.Range.Text = form1.getText(4) + Environment.NewLine;
+                ;
+                para11.Range.InsertParagraphAfter();
+
+                //Add Chart 1.4
+                try
+                {
+                    Microsoft.Office.Interop.Word.Paragraph para12 = document.Content.Paragraphs.Add(ref missing);
+                    pic = para12.Range.InlineShapes.AddPicture(
+                        "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\1.3.png");
+                }
+                catch
+                {
+                }
+
+                //Page break
+                Microsoft.Office.Interop.Word.Paragraph para13 = document.Content.Paragraphs.Add(ref missing);
+                para13.Range.InsertBreak(Microsoft.Office.Interop.Word.WdBreakType.wdPageBreak);
+
+                copySheetToClipboard();
+
+                try
+                {
+                    Microsoft.Office.Interop.Word.Paragraph para14 = document.Content.Paragraphs.Add(ref missing);
+                    pic = para14.Range.InlineShapes.AddPicture(
+                        "C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\CashFlow.bmp");
+                }
+                catch
+                {
+                    MessageBox.Show("Could not import Cash Flow to Word");
+                }
+
+
+
 
 
                 //Save the document
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "PDF|*.pdf|Word|*.doc;*.docx";
+                saveFileDialog.Filter = "Word|*.doc;*.docx|PDF|*.pdf";
                 saveFileDialog.Title = "Export Business Plan";
                 saveFileDialog.ShowDialog();
 
@@ -266,10 +381,33 @@ namespace BusinessPlanWriter
                 winword = null;
                 MessageBox.Show("Document created successfully !");
             }
-            catch (Exception ex)
+
+       
+
+        private void copySheetToClipboard()
+        {
+            //create cashflow worksheet
+            string name = "Cash Flow";
+            bool exists = false;
+            Worksheet ws = Globals.ThisAddIn.GetWorksheet();
+            Workbook wb = Globals.ThisAddIn.Application.ActiveWorkbook;
+            foreach (Worksheet sheets in wb.Worksheets)
             {
-                MessageBox.Show(ex.Message);
+                if (sheets.Name.Equals(name))
+                {
+                    ws = sheets;
+                    sheets.Activate();
+                    sheets.Visible = XlSheetVisibility.xlSheetVisible;
+                }
             }
+
+            Range rnge = ws.Range["A1", form7.cellrg];
+            rnge.CopyPicture(Microsoft.Office.Interop.Excel.XlPictureAppearance.xlScreen, Microsoft.Office.Interop.Excel.XlCopyPictureFormat.xlBitmap);
+
+
+            Clipboard.GetImage().Save("C:\\Users\\admin\\Source\\Repos\\BusinessPlanWriter\\BPWChartImages\\CashFlow.bmp", ImageFormat.Bmp);
+
+
         }
     }
 }

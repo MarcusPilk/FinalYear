@@ -127,7 +127,6 @@ namespace BusinessPlanWriter
         {
             if (currency.Length.Equals(0))
             {
-                MessageBox.Show("No currency selected");
                 return "";
             }
             else
