@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,10 +143,15 @@ namespace BusinessPlanWriter
 
         private void egBP_Click(object sender, EventArgs e)
         {
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.FileName = "D:\\Documents\\compTemplate.txt";
-            form1.load_All(openFileDialog);
+            StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+            form1.load_All(openFileDialog,reader);
+            form7.load_All(reader);
             MessageBox.Show("Example File Loaded Successfully!");
+            reader.Dispose();
+            reader.Close();
         }
 
         private void saveBP_Click(object sender, EventArgs e)
@@ -162,10 +168,14 @@ namespace BusinessPlanWriter
 
 
             MessageBox.Show(path);
-            form1.save_All(path,saveFileDialog);
+            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
+            form1.save_All(path,writer);
+            form7.save_All(writer,path);
+            writer.Dispose();
+            writer.Close();
 
-            
-            
+
+
         }
 
         private void loadBP_Click(object sender, EventArgs e)
@@ -176,7 +186,12 @@ namespace BusinessPlanWriter
             openFileDialog.ShowDialog();
 
             MessageBox.Show(openFileDialog.FileName);
-            form1.load_All(openFileDialog);
+            StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+            form1.load_All(openFileDialog,reader);
+            form7.load_All(reader);
+            reader.Dispose();
+            reader.Close();
+
         }
 
         private void pdfButton_Click(object sender, EventArgs e)

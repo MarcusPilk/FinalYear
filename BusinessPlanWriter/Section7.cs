@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -523,6 +524,136 @@ namespace BusinessPlanWriter
                     }
                     j++;
                 }
+            }
+        }
+
+        public void save_All(StreamWriter writer, string path)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (dataGridView1.ColumnCount == 0)
+            {
+                writer.WriteLine("ARRAY EMPTY");
+            }
+            else
+            {
+                stringBuilder.Append("ARRAY " + dataGridView1.ColumnCount.ToString() + "," +
+                                     (dataGridView1.RowCount - 1).ToString() + "\r\n");
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                {
+                    if (dataGridView1.Columns[i].Name == null)
+                    {
+                        stringBuilder.Append(" ,");
+                    }
+                    else
+                    {
+                        stringBuilder.Append(dataGridView1.Columns[i].Name + ",");
+                    }
+                }
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value == null)
+                        {
+                            
+                        }
+                        else
+                        {
+                            stringBuilder.Append(cell.Value.ToString() + ",");
+
+                        }
+
+                    }
+                }
+            }
+
+            stringBuilder.Append("\r\n");
+
+                if (dataGridView3.ColumnCount == 0)
+                {
+                    writer.WriteLine("ARRAY EMPTY");
+                }
+                else
+                {
+                    stringBuilder.Append("ARRAY " + dataGridView3.ColumnCount.ToString() + "," +
+                                         (dataGridView3.RowCount - 1).ToString() + "\r\n");
+
+                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.Value == null)
+                            {
+
+                            }
+                            else
+                            {
+                                stringBuilder.Append(cell.Value.ToString() + ",");
+
+                            }
+                    }
+                    }
+
+                }
+            writer.WriteLine(stringBuilder.ToString());
+
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        public void load_All(StreamReader reader)
+        {
+            String s = reader.ReadLine();
+            if (s.Contains("ARRAY EMPTY"))
+            {
+                return;
+            }
+            else
+            {
+                s = s.Replace("ARRAY", String.Empty);
+                String[] elements = Regex.Split(s, ",");
+                var col = Convert.ToInt32(elements[0]);
+                var row = Convert.ToInt32(elements[1]);
+                String[] tableData = Regex.Split(reader.ReadLine(), ",");
+                int e = 0;
+                dataGridView1.ColumnCount = col;
+                for (int i = 0; i < col; i++)
+                {
+                    if (tableData[e] == null || tableData[e] == "")
+                    {
+                        dataGridView1.Columns[i].Name = "";
+                    }
+                    else
+                    {
+                        dataGridView1.Columns[i].Name = tableData[e];
+                    }
+                    e++;
+                }
+
+                for (int i = 0; i < row; i++)
+                {
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dataGridView1);
+                    for (int j = 0; j < col; j++)
+                    {
+                        if (tableData[e] == null || tableData[e] == "")
+                        {
+                            newRow.Cells[j].Value = "";
+                        }
+                        else
+                        {
+                            newRow.Cells[j].Value = tableData[e];
+                        }
+                        dataGridView1.Rows.Add(newRow);
+
+                    }
+                }
+                
             }
         }
     }

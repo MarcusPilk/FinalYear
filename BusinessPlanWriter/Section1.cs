@@ -240,9 +240,8 @@ namespace BusinessPlanWriter
             this.textBox3.Text = ws1.Range["A8", "A8"].get_Value();
             this.textBox4.Text = ws1.Range["A11", "A11"].get_Value();
         }
-        public void save_All(string path, SaveFileDialog saveFileDialog)
+        public void save_All(string path, StreamWriter writer)
         {
-            StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
             writer.WriteLine(textBox1.Text.Replace(Environment.NewLine,"?</> "));
             writer.WriteLine(tableForm1.save_All(path));
 
@@ -255,14 +254,10 @@ namespace BusinessPlanWriter
             writer.WriteLine(textBox4.Text.Replace(Environment.NewLine, "?</> "));
             writer.WriteLine(tableForm4.save_All(path));
 
-            writer.Dispose();
-            writer.Close();
-
         }
 
-        public void load_All(OpenFileDialog openFileDialog)
+        public void load_All(OpenFileDialog openFileDialog,StreamReader reader)
         {
-            StreamReader reader = new StreamReader(openFileDialog.OpenFile());
             textBox1.Text = reader.ReadLine().Replace("?</> ",Environment.NewLine);
             tableForm1.load_All(openFileDialog, reader);
             textBox2.Text = reader.ReadLine().Replace("?</> ", Environment.NewLine);
@@ -271,8 +266,7 @@ namespace BusinessPlanWriter
             tableForm3.load_All(openFileDialog, reader);
             textBox4.Text = reader.ReadLine().Replace("?</> ", Environment.NewLine);
             tableForm4.load_All(openFileDialog, reader);
-            reader.Dispose();
-            reader.Close();
+
             
         }
     }
